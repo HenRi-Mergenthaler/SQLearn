@@ -18,10 +18,7 @@
         </div>
 
         <div class="auth-region col-12 col-md-5">
-          <q-card class="auth-card">
-            <div class="text-h5 text-weight-bold text-center text-primary q-mb-md">Entrar no SQLearn</div>
-            <router-view />
-          </q-card>
+          <router-view />
         </div>
       </div>
     </q-page-container>

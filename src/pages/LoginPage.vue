@@ -1,12 +1,13 @@
 <template>
   <div class="login-page">
-    <!-- Estado 1: Formulário de Login Padrão -->
-    <div
+    <!-- Estado 1: Formulário de Login Padrão (QCard Morph) -->
+    <q-card
       v-show="currentModel === 'form'"
-      class="form-container"
+      class="auth-card form-container"
       data-morph-group="login"
       data-morph-id="card"
     >
+      <div class="text-h5 text-weight-bold text-center text-primary q-mb-md">Entrar no SQLearn</div>
       <q-form @submit.prevent="handleStartMorph" class="login-form">
         <q-input
           v-model="username"
@@ -27,7 +28,7 @@
           size="lg"
         />
       </q-form>
-    </div>
+    </q-card>
 
     <!-- Estado 2: Console Monaco SQL em Tela Cheia / Centralizado -->
     <q-dialog v-model="showDialog" persistent transition-show="fade" transition-hide="fade">
@@ -95,8 +96,9 @@ const handleStartMorph = () => {
     morph({
       from: '[data-morph-id="card"][data-morph-group="login"]:not(.q-dialog *)',
       to: '.q-dialog [data-morph-id="card"][data-morph-group="login"]',
-      duration: 600,
+      duration: 1200,
       easing: 'cubic-bezier(0.25, 0.8, 0.25, 1)',
+      tween: true,
       onToggle() {
         currentModel.value = 'code'
       },
@@ -129,6 +131,14 @@ $my-radius: 16px;
   :deep(.q-btn--rounded) {
     border-radius: $my-radius !important;
   }
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
 }
 </style>
 

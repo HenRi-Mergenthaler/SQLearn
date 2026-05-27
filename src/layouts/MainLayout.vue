@@ -1,14 +1,8 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
-      <q-toolbar>
-        <q-btn flat dense round icon="menu" aria-label="Menu" @click="toggleLeftDrawer" />
-
-        <q-toolbar-title> Quasar App </q-toolbar-title>
-
-        <div>Quasar v{{ $q.version }}</div>
-      </q-toolbar>
-    </q-header>
+  <BaseLayout show-logo>
+    <template #toolbar-start>
+      <q-btn flat dense round icon="menu" aria-label="Menu" @click="toggleLeftDrawer" class="q-mr-sm" />
+    </template>
 
     <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
       <q-list>
@@ -21,12 +15,13 @@
     <q-page-container>
       <router-view />
     </q-page-container>
-  </q-layout>
+  </BaseLayout>
 </template>
 
 <script setup>
 import { ref } from 'vue'
 import EssentialLink from 'components/EssentialLink.vue'
+import BaseLayout from './BaseLayout.vue'
 
 const linksList = [
   {
